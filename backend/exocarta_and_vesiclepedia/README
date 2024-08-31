@@ -1,0 +1,71 @@
+Usage: 
+  python get_vesiclepedia_data.py http://microvesicles.org/Archive/VESICLEPEDIA_PROTEIN_MRNA_DETAILS_5.1.txt
+  python get_vesiclepedia_data.py http://microvesicles.org/Archive/VESICLEPEDIA_PROTEIN_MRNA_DETAILS_5.1.txt
+  python get_vesiclepedia_data.py http://microvesicles.org/Archive/VESICLEPEDIA_MIRNA_DETAILS_5.1.txt --output vesiclepedia_protein_mirna_details.csv
+  python get_vesiclepedia_data.py http://microvesicles.org/Archive/VESICLEPEDIA_LIPID_DETAILS_5.1.txt --output vesiclepedia_protein_lipid_details.csv
+  python get_vesiclepedia_data.py http://microvesicles.org/Archive/VESICLEPEDIA_EXPERIMENT_DETAILS_5.1.txt --output vesiclepedia_protein_experiment_details.csv
+  python get_vesiclepedia_data.py http://microvesicles.org/Archive/VESICLEPEDIA_GENE_DETAILS_5.1.txt --output vesiclepedia_protein_gene_details.csv
+  python get_vesiclepedia_data.py http://microvesicles.org/Archive/VESICLEPEDIA_PTM_DETAILS_5.1.txt --output vesiclepedia_protein_ptm_details.csv
+  python get_vesiclepedia_data.py http://microvesicles.org/Archive/Vesiclepedia_Proteins_GPAD.txt --output vesiclepedia_proteins_GPAD_details.csv
+  python get_vesiclepedia_data.py http://microvesicles.org/Archive/Vesiclepedia_RNAs_GPAD.txt --output vesiclepedia_RNAs_GPAD_details.csv
+
+Visualize Data:
+  python visualize_vesiclepedia_data.py
+  Common proteins: 6055
+  ExoCarta unique proteins: 462
+  Vesiclepedia unique proteins: 20820
+
+  python visualize_exocarta.py
+  python visualize_exocarta.py
+  python visualize_exocarta.py
+  python visualize_vesiclepedia_data.py
+  python visualize_vesiclepedia_data.py
+  python visualize_vesiclepedia_data.py
+
+
+Important notes:
+
+This code assumes that ExoCarta data represents NDE proteins. In practice, you'd need to ensure your ExoCarta data is specifically from neuron-derived EVs.
+The surface protein analysis is simplified. In a real scenario, you'd need a comprehensive database of known surface proteins or use prediction algorithms to identify potential surface proteins.
+The comparison between human (ExoCarta) and non-human (Vesiclepedia) proteins is a simplification. Ideally, you'd compare neuron-derived EVs with EVs from other human cell types.
+
+This implementation provides a starting point for identifying neuron-specific proteins that could serve as potential targets for antibody development. You can further refine this analysis by incorporating more specific datasets and additional bioinformatics tools for protein localization prediction.
+% python finding_NDE_from_EXOandVesicle_data.py
+
+ExoCarta Data:
+Shape: (34944, 7)
+Columns:
+['CONTENT ID', 'CONTENT TYPE', 'ENTREZ GENE ID', 'GENE SYMBOL', 'SPECIES', 'EXPERIMENT ID', 'METHODS']
+
+First few rows:
+   CONTENT ID CONTENT TYPE  ENTREZ GENE ID GENE SYMBOL       SPECIES  EXPERIMENT ID            METHODS
+0          13      protein             967        CD63  Homo sapiens              4   Western blotting
+1          14      protein            1803        DPP4  Homo sapiens              4   Western blotting
+2          15      protein           79574      EPS8L3  Homo sapiens              4  Mass spectrometry
+3          16      protein           55971    BAIAP2L1  Homo sapiens              4  Mass spectrometry
+4          17      protein           56667       MUC13  Homo sapiens              4  Mass spectrometry
+
+Vesiclepedia Data:
+Shape: (537789, 7)
+Columns:
+['CONTENT ID', 'CONTENT TYPE', 'ENTREZ GENE ID', 'GENE SYMBOL', 'SPECIES', 'EXPERIMENT ID', 'METHODS']
+
+First few rows:
+   CONTENT ID CONTENT TYPE  ENTREZ GENE ID GENE SYMBOL                  SPECIES  EXPERIMENT ID                                 METHODS
+0       17209      protein           31009       RpL36  Drosophila melanogaster            161  Mass spectrometry [HCT ETD II iontrap]
+1       17391      protein           31009       RpL36  Drosophila melanogaster            162  Mass spectrometry [HCT ETD II iontrap]
+2       17210      protein           31022       RpL22  Drosophila melanogaster            161  Mass spectrometry [HCT ETD II iontrap]
+3       17392      protein           31022       RpL22  Drosophila melanogaster            162  Mass spectrometry [HCT ETD II iontrap]
+4      448865      protein           31071      CG3638  Drosophila melanogaster            979                       Mass spectrometry
+
+Total NDE proteins: 6517
+Total other cell-type proteins: 10929
+Neuron-specific proteins: 5117
+
+Potential neuron-specific surface protein targets: {'L1CAM', 'NCAM1'}
+
+Top 20 Neuron-Specific Proteins:
+['SMPDL3B', 'NIPBL', 'CPSF1', 'OR2A4', 'GABRB3', 'IGHG1', 'SNORD59A', 'RTEL1-TNFRSF6B', 'S100A16', 'MPZL3', 'ARL4C', 'LEPROTL1', 'PSMG1', 'TRIM26', 'MIDN', 'APOC2', 'SNRPB', 'GLDC', 'TIPRL', 'SLC45A2']
+
+Potential Neuron-Specific Surface Protein Targets:
+['L1CAM', 'NCAM1']

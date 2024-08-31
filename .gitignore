@@ -1,0 +1,6 @@
+# Ignore gene2go file
+gene2go
+
+# Ignore go-basic.obo file
+go-basic.obo
+
