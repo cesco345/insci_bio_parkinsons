@@ -1,8 +1,8 @@
-# InSci Bio Tools: Exosome Analysis Toolkit
+# InSci Bio Tools: Analysis Toolkit
 
 ## Overview
 
-This is a basic toolkit for analyzing exosomal proteins in neurological diseases, with a focus on Parkinson's Disease (PD). These code snippets demonstrates the functionality to enable researchers to identify novel exosomal proteins, compare them with existing databases, and perform Gene Ontology (GO) enrichment analysis. The results are visualized through various plots, facilitating the interpretation of proteomic data.
+This is a basic toolkit for analyzing exosomal proteins in with focus on this Parkinson's Disease dataset. These code snippets demonstrates the functionality to enable researchers to identify novel exosomal proteins, compare them with existing databases, and perform Gene Ontology (GO) enrichment analysis. The results are visualized through various plots, facilitating the interpretation of proteomic data.
 
 ## Importance in Drug Discovery
 
