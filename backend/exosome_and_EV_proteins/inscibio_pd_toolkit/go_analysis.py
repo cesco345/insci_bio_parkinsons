@@ -3,7 +3,6 @@ import re
 from goatools import obo_parser
 from goatools.go_enrichment import GOEnrichmentStudy
 from goatools.base import download_go_basic_obo
-from goatools.associations import read_ncbi_gene2go
 
 def clean_gene_symbol(symbol):
     return re.sub(r';.*$', '', symbol).strip()
@@ -37,7 +36,7 @@ def perform_go_analysis(novel_proteins, output_file):
         for line in f:
             fields = line.strip().split('\t')
             if fields[0] == '9606':  # Human taxid
-                gene_id, symbol, go_id = fields[1], fields[2].upper(), fields[3]
+                gene_id, symbol, go_id = fields[1], fields[2].upper(), fields[5]
                 if gene_id not in geneid_to_go:
                     geneid_to_go[gene_id] = set()
                 geneid_to_go[gene_id].add(go_id)
@@ -45,6 +44,15 @@ def perform_go_analysis(novel_proteins, output_file):
 
     print(f"Parsed {len(geneid_to_go)} unique gene IDs")
     print(f"Parsed {len(symbol_to_geneid)} unique gene symbols")
+
+    # Debug: Print some entries from symbol_to_geneid
+    print("\nSample entries from symbol_to_geneid:")
+    for symbol in list(symbol_to_geneid.keys())[:10]:
+        print(f"{symbol}: {symbol_to_geneid[symbol]}")
+
+    # Debug: Print some novel proteins
+    print("\nSample novel proteins:")
+    print(novel_proteins[:10])
 
     # Map novel proteins to NCBI gene IDs
     study_genes = set()

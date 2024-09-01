@@ -1,4 +1,4 @@
-# InSci Bio Tools: Exosome Analysis Toolkit
+# InSci Bio Tools: Neurological Disease Exosome Analysis Toolkit
 
 ## Overview
 

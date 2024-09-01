@@ -19,7 +19,7 @@ def plot_go_barchart(go_terms, p_values, output_file="go_barchart.png"):
     plt.barh(y_pos, -np.log10(sorted_p_values), align='center', alpha=0.8)
     plt.yticks(y_pos, sorted_terms, fontsize=10)
     plt.xlabel('-log10(FDR-corrected p-value)', fontsize=12)
-    plt.title('Top 10 Enriched GO Terms', fontsize=14)
+    plt.title('Top Enriched GO Terms', fontsize=14)
     
     plt.tight_layout()
     plt.savefig(output_file, dpi=300, bbox_inches='tight')
@@ -82,17 +82,3 @@ def plot_go_network(go_terms, p_values, output_file="go_network.png"):
     plt.savefig(output_file, dpi=300, bbox_inches='tight')
     plt.show()
     plt.close()
-
-# Example usage
-go_terms = [
-    "smooth endoplasmic reticulum", "chylomicron remnant", "blood microparticle",
-    "enzyme binding", "heparin binding", "intermediate-density lipoprotein particle",
-    "positive regulation of gene expression", "positive regulation of fibroblast proliferation",
-    "positive regulation of amyloid fibril formation", "lipoprotein catabolic process"
-]
-p_values = [1.93e-03, 1.93e-03, 1.93e-03, 1.93e-03, 3.59e-03, 3.90e-03, 4.24e-03, 4.33e-03, 4.33e-03, 4.87e-03]
-
-# Generate and display all visualizations
-plot_go_barchart(go_terms, p_values)
-plot_go_bubbleplot(go_terms, p_values)
-plot_go_network(go_terms, p_values)
